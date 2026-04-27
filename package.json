@@ -1,0 +1,21 @@
+{
+  "name": "aena-diseno",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.2",
+  "dependencies": {
+    "@astrojs/svelte": "^8.0.5",
+    "astro": "^6.1.9",
+    "svelte": "^5.55.5",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,244 @@
+---
+import AirportSearch from '../components/AirportSearch.svelte';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aena — Pasajeros</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">aena</div>
+      <nav>
+        <a href="#">Pasajeros</a>
+        <a href="#">Aerolíneas</a>
+        <a href="#">Corporativa</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-label">Información para pasajeros</p>
+      <h1>¿A qué aeropuerto<br/>vas hoy?</h1>
+      <p class="hero-sub">Busca tu aeropuerto y accede a toda la información en un clic</p>
+      <AirportSearch client:load />
+    </div>
+  </section>
+
+  <section class="actions">
+    <p class="section-label">¿Qué necesitas?</p>
+    <div class="cards">
+      <a href="#" class="card">
+        <div class="card-icon">🧳</div>
+        <h3>Equipaje</h3>
+        <p>Qué puedes llevar, restricciones y equipaje especial</p>
+        <span class="card-arrow">→</span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon">🛂</div>
+        <h3>Controles y seguridad</h3>
+        <p>Qué esperar en el control, documentación necesaria</p>
+        <span class="card-arrow">→</span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon">🚗</div>
+        <h3>Parking y transporte</h3>
+        <p>Cómo llegar, aparcamiento y transporte público</p>
+        <span class="card-arrow">→</span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-icon">♿</div>
+        <h3>Asistencia especial</h3>
+        <p>Servicio sin barreras, movilidad reducida y necesidades médicas</p>
+        <span class="card-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026  Aena — Rediseño de usabilidad · Práctica Monlau</p>
+  </footer>
+
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --color-primary: #96ce00;
+    --color-bg: #1a2732;
+    --color-bg-dark: #111d27;
+    --color-bg-card: #253444;
+    --color-text: #fff;
+    --color-text-muted: rgba(255,255,255,0.5);
+    --color-border: rgba(150,206,0,0.15);
+    --font-sans: 'DM Sans', sans-serif;
+    --font-serif: 'DM Serif Display', serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-bg-dark);
+    border-bottom: 2px solid var(--color-primary);
+    padding: 0 2rem;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--color-primary);
+  }
+
+  nav { display: flex; gap: 2rem; }
+
+  nav a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--color-primary); }
+
+  .hero {
+    padding: 6rem 2rem 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 80px;
+    background: var(--color-bg-card);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .hero-content {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-label {
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-sub {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .actions {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+  }
+
+  .card-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+  .card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .card p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .card-arrow {
+    margin-top: auto;
+    padding-top: 1rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(246,246,246,0.4);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-dark);
+  }
+</style>

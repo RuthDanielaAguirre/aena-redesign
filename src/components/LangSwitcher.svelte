@@ -1,6 +1,6 @@
 <script>
   import 'flag-icons/css/flag-icons.min.css';
-  let { currentLang = 'es', navLabel = 'Cambiar idioma / Change language' } = $props();
+  let { currentLang = 'es', navLabel = 'Change language' } = $props();
 
   const langs = [
     { code: 'es', countryCode: 'es', label: 'Español', path: '/' },
@@ -8,7 +8,7 @@
   ];
 </script>
 
-<div class="switcher" role="navigation" aria-label={navLabel}>
+<nav class="switcher" aria-label={navLabel}>
   {#each langs as lang}
     <a
       href={lang.path}
@@ -22,7 +22,7 @@
       <span class="code">{lang.code.toUpperCase()}</span>
     </a>
   {/each}
-</div>
+</nav>
 
 <style>
   .switcher {
@@ -42,8 +42,7 @@
     padding: 0.3rem 0.6rem;
     border-radius: 6px;
     text-decoration: none;
-    color: #d9e1ea;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+    color: rgba(255,255,255,0.5);
     font-size: 0.75rem;
     font-weight: 600;
     transition: all 0.2s;
@@ -51,17 +50,13 @@
   }
 
   .lang-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+  .lang-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: 6px; }
 
   .lang-btn.active {
     background: var(--color-primary);
     color: #111d27;
   }
 
-  .fi {
-    width: 1.2em;
-    height: 0.9em;
-    border-radius: 2px;
-  }
-
+  .fi { width: 1.2em; height: 0.9em; border-radius: 2px; }
   .code { line-height: 1; }
 </style>

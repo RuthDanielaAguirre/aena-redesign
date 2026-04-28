@@ -28,11 +28,7 @@
     { name: "Zaragoza", code: "ZAZ" },
   ];
 
-  /** @type {{ inputLabel: string; placeholder: string; noResults: string; goBtn: string; goBtnAria: string; listLabel: string; selectAirportAria: string }} */
-  let { labels } = $props();
-
-  const inputId = "airport-search-input";
-  const popupId = "airport-search-popup";
+  let { labels = { placeholder: 'Search airport...', goBtn: 'View airport', noResults: 'No airport found' } } = $props();
 
   let query = $state("");
   let showDropdown = $state(false);
@@ -48,12 +44,6 @@
         )
   );
 
-  let popupOpen = $derived(showDropdown && query.length > 0);
-
-  function fill(template, vars) {
-    return template.replace(/\{(\w+)\}/g, (_, key) => vars[key] ?? "");
-  }
-
   function selectAirport(airport) {
     selected = airport;
     query = airport.name;
@@ -68,98 +58,51 @@
   function handleBlur() {
     setTimeout(() => (showDropdown = false), 150);
   }
-
-  function selectAria(airport) {
-    return fill(labels.selectAirportAria, {
-      name: airport.name,
-      code: airport.code,
-    });
-  }
-
-  function goBtnAriaLabel() {
-    if (!selected) return "";
-    return fill(labels.goBtnAria, {
-      name: selected.name,
-      code: selected.code,
-    });
-  }
 </script>
 
 <div class="search-wrapper">
-  <label class="sr-only" for={inputId}>{labels.inputLabel}</label>
   <div class="search-box">
     <span class="search-icon" aria-hidden="true">✈</span>
     <input
-      id={inputId}
       type="text"
-      role="combobox"
-      aria-autocomplete="list"
-      aria-expanded={popupOpen}
-      aria-controls={popupOpen ? popupId : undefined}
-      aria-haspopup="listbox"
       placeholder={labels.placeholder}
       bind:value={query}
       oninput={handleInput}
       onblur={handleBlur}
       onfocus={() => query.length > 0 && (showDropdown = true)}
+      aria-label={labels.placeholder}
+      aria-autocomplete="list"
+      aria-expanded={showDropdown}
+      role="combobox"
     />
     {#if selected}
-      <span class="badge" aria-hidden="true">{selected.code}</span>
+      <span class="badge" aria-live="polite">{selected.code}</span>
     {/if}
   </div>
 
-  {#if popupOpen}
-    <div
-      id={popupId}
-      class="search-popup"
-      role="region"
-      aria-label={labels.listLabel}
-    >
-      {#if filtered.length > 0}
-        <ul class="dropdown" role="listbox">
-          {#each filtered as airport}
-            <li role="presentation">
-              <button
-                type="button"
-                role="option"
-                aria-selected={selected?.code === airport.code}
-                aria-label={selectAria(airport)}
-                onclick={() => selectAirport(airport)}
-              >
-                <span class="airport-name">{airport.name}</span>
-                <span class="airport-code" aria-hidden="true">{airport.code}</span>
-              </button>
-            </li>
-          {/each}
-        </ul>
-      {:else}
-        <div class="no-results" role="status" aria-live="polite">
-          {labels.noResults}
-        </div>
-      {/if}
-    </div>
+  {#if showDropdown && filtered.length > 0}
+    <ul class="dropdown" role="listbox">
+      {#each filtered as airport}
+        <li role="option" aria-selected="false">
+          <button onclick={() => selectAirport(airport)}>
+            <span class="airport-name">{airport.name}</span>
+            <span class="airport-code">{airport.code}</span>
+          </button>
+        </li>
+      {/each}
+    </ul>
+  {/if}
+
+  {#if showDropdown && query.length > 0 && filtered.length === 0}
+    <div class="no-results" role="status">{labels.noResults}</div>
   {/if}
 
   {#if selected}
-    <button type="button" class="go-btn" aria-label={goBtnAriaLabel()}>
-      {fill(labels.goBtn, { name: selected.name })}
-    </button>
+    <button type="button" class="go-btn">{labels.goBtn}: {selected.name} →</button>
   {/if}
 </div>
 
 <style>
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-
   .search-wrapper {
     position: relative;
     width: 100%;
@@ -170,17 +113,14 @@
   .search-box {
     display: flex;
     align-items: center;
-    background: var(--color-bg-card);
+    background: #253444;
     border: 2px solid var(--color-primary);
     border-radius: 12px;
     padding: 0 1.2rem;
     gap: 0.75rem;
   }
 
-  .search-icon {
-    font-size: 1.2rem;
-    color: var(--color-primary);
-  }
+  .search-icon { font-size: 1.2rem; color: var(--color-primary); }
 
   input {
     flex: 1;
@@ -193,13 +133,11 @@
     background: transparent;
   }
 
-  input::placeholder {
-    color: var(--color-text-soft, #c2ceda);
-  }
+  input::placeholder { color: rgba(255,255,255,0.4); }
 
   .badge {
     background: var(--color-primary);
-    color: var(--color-bg);
+    color: #1a2732;
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.25rem 0.6rem;
@@ -207,21 +145,12 @@
     letter-spacing: 0.05em;
   }
 
-  .search-popup {
+  .dropdown {
     position: absolute;
     top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    z-index: 100;
-  }
-
-  .dropdown {
-    position: relative;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    background: var(--color-bg-card);
-    border: 1px solid rgba(150, 206, 0, 0.3);
+    left: 0; right: 0;
+    background: #253444;
+    border: 1px solid rgba(150,206,0,0.3);
     border-radius: 12px;
     list-style: none;
     margin: 0;
@@ -243,42 +172,30 @@
     border-radius: 8px;
     font-family: inherit;
     transition: background 0.15s;
-    color: inherit;
-    text-align: inherit;
   }
 
-  .dropdown li button:hover {
-    background: rgba(150, 206, 0, 0.1);
-  }
+  .dropdown li button:hover { background: rgba(150,206,0,0.1); }
+  .dropdown li button:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; border-radius: 8px; }
 
-  .dropdown li button:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  .airport-name {
-    font-size: 0.95rem;
-    color: #fff;
-    text-align: left;
-  }
+  .airport-name { font-size: 0.95rem; color: #fff; text-align: left; }
 
   .airport-code {
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--color-primary);
-    background: var(--color-border);
+    background: rgba(150,206,0,0.15);
     padding: 0.2rem 0.5rem;
     border-radius: 5px;
   }
 
   .no-results {
-    background: var(--color-bg-card);
+    background: #253444;
     border-radius: 12px;
     padding: 1rem;
     text-align: center;
-    color: var(--color-text-soft, #c2ceda);
+    color: rgba(255,255,255,0.5);
     margin-top: 8px;
-    border: 1px solid rgba(150, 206, 0, 0.2);
+    border: 1px solid rgba(150,206,0,0.2);
   }
 
   .go-btn {
@@ -296,11 +213,6 @@
     transition: background 0.2s;
   }
 
-  .go-btn:hover {
-    background: #a8e000;
-  }
-  .go-btn:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 3px;
-  }
+  .go-btn:hover { background: #a8e000; }
+  .go-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
 </style>

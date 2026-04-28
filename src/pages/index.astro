@@ -8,6 +8,8 @@ const site = Astro.site!;
 const canonicalUrl = new URL('/', site).href;
 const urlEs = new URL('/', site).href;
 const urlEn = new URL('/en/', site).href;
+const unsplash = (photo: string, w: number) =>
+  `https://images.unsplash.com/${photo}?auto=format&fit=crop&w=${w}&q=60`;
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -31,7 +33,20 @@ const urlEn = new URL('/en/', site).href;
   <meta name="twitter:title" content={i.seo.ogTitle} />
   <meta name="twitter:description" content={i.seo.ogDescription} />
   <meta name="twitter:image" content={i.seo.ogImage} />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
 </head>
 <body>
 
@@ -43,23 +58,23 @@ const urlEn = new URL('/en/', site).href;
         <a href="#">{i.nav.airlines}</a>
         <a href="#">{i.nav.corporate}</a>
       </nav>
-      <LangSwitcher currentLang={lang} navLabel={i.a11y.langSwitcher} client:load />
+      <LangSwitcher currentLang={lang} navLabel={i.a11y.langSwitcher} client:idle />
     </div>
   </header>
 
   <section class="hero" aria-label={i.hero.eyebrow}>
     <div class="slides" aria-hidden="true">
-      <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&q=80')"><div class="slide-label">Madrid · Barajas</div></div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1600&q=80')"><div class="slide-label">Barcelona · El Prat</div></div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80')"><div class="slide-label">Palma · Mallorca</div></div>
-      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1483450388369-9ed95738483c?w=1600&q=80')"><div class="slide-label">Tenerife · Sur</div></div>
+      <div class="slide active" style={`background-image: url('${unsplash('photo-1436491865332-7a61a109cc05', 1600)}')`}><div class="slide-label">Madrid · Barajas</div></div>
+      <div class="slide" style={`background-image: url('${unsplash('photo-1569154941061-e231b4725ef1', 1600)}')`}><div class="slide-label">Barcelona · El Prat</div></div>
+      <div class="slide" style={`background-image: url('${unsplash('photo-1544620347-c4fd4a3d5957', 1600)}')`}><div class="slide-label">Palma · Mallorca</div></div>
+      <div class="slide" style={`background-image: url('${unsplash('photo-1483450388369-9ed95738483c', 1600)}')`}><div class="slide-label">Tenerife · Sur</div></div>
     </div>
     <div class="hero-overlay" aria-hidden="true"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">{i.hero.eyebrow}</p>
       <h1>{i.hero.title}<br/><em>{i.hero.titleEm}</em></h1>
       <p class="hero-sub">{i.hero.sub}</p>
-      <AirportSearch client:load labels={i.search} />
+      <AirportSearch client:visible labels={i.search} />
     </div>
     <div class="slider-dots" role="tablist" aria-label={i.a11y.slidesRegion}>
       <button class="dot active" data-index="0" role="tab" aria-selected="true" aria-label="Madrid"></button>
@@ -122,7 +137,7 @@ const urlEn = new URL('/en/', site).href;
 
   <section class="vip" aria-labelledby="vip-title">
     <div class="vip-hero">
-      <div class="vip-hero-img" style="background-image: url('https://images.unsplash.com/photo-1583416750470-965b2707b355?w=1600&q=80')" aria-hidden="true"></div>
+      <div class="vip-hero-img" style={`background-image: url('${unsplash('photo-1583416750470-965b2707b355', 1400)}')`} aria-hidden="true"></div>
       <div class="vip-hero-overlay" aria-hidden="true"></div>
       <div class="vip-hero-content">
         <p class="vip-eyebrow">{i.vip.eyebrow}</p>
@@ -156,7 +171,7 @@ const urlEn = new URL('/en/', site).href;
       </div>
       <div class="info-grid">
         <a href="#" class="info-card info-card--wide" aria-label={i.info.cards[0].title}>
-          <div class="info-card-img" style="background-image: url('https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=800&q=80')" aria-hidden="true"></div>
+          <div class="info-card-img" style={`background-image: url('${unsplash('photo-1553361371-9b22f78e8b1d', 800)}')`} aria-hidden="true"></div>
           <div class="info-card-body">
             <span class="info-tag">{i.info.cards[0].tag}</span>
             <h3>{i.info.cards[0].title}</h3>
@@ -166,11 +181,11 @@ const urlEn = new URL('/en/', site).href;
         </a>
         {i.info.cards.slice(1).map((card, idx) => {
           const imgs = [
-            'https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&q=80',
-            'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=600&q=80',
-            'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
-            'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&q=80',
-            'https://images.unsplash.com/photo-1583416750470-965b2707b355?w=600&q=80',
+            unsplash('photo-1578575437130-527eed3abbec', 560),
+            unsplash('photo-1532629345422-7515f3d16bb6', 560),
+            unsplash('photo-1587300003388-59208cc962cb', 560),
+            unsplash('photo-1474487548417-781cb71495f3', 560),
+            unsplash('photo-1583416750470-965b2707b355', 560),
           ];
           const isLast = idx === 4;
           return (
@@ -191,20 +206,20 @@ const urlEn = new URL('/en/', site).href;
 
   <section class="market" aria-label={i.a11y.marketRegion}>
     <div class="market-inner">
-      <a href="#" class="market-card" aria-label={i.a11y.shopCard} style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=80')">
+      <a href="#" class="market-card" aria-label={i.a11y.shopCard} style={`background-image: url('${unsplash('photo-1483985988355-763728e1935b', 720)}')`}>
         <div class="market-overlay" aria-hidden="true"></div>
         <div class="market-card-content">
-          <span class="market-eyebrow">Aena Market</span>
-          <h3>Shop<br/><em>to Fly</em></h3>
+          <span class="market-eyebrow">{i.market.eyebrow}</span>
+          <h3>{i.market.shopLine1}<br/><em>{i.market.shopLine2Em}</em></h3>
           <p>{i.market.shopDesc}</p>
           <span class="btn btn--primary">{i.market.shopCta}</span>
         </div>
       </a>
-      <a href="#" class="market-card" aria-label={i.a11y.foodCard} style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80')">
+      <a href="#" class="market-card" aria-label={i.a11y.foodCard} style={`background-image: url('${unsplash('photo-1504674900247-0877df9cc836', 720)}')`}>
         <div class="market-overlay market-overlay--food" aria-hidden="true"></div>
         <div class="market-card-content">
-          <span class="market-eyebrow">Aena Market</span>
-          <h3>Food<br/><em>to Fly</em></h3>
+          <span class="market-eyebrow">{i.market.eyebrow}</span>
+          <h3>{i.market.foodLine1}<br/><em>{i.market.foodLine2Em}</em></h3>
           <p>{i.market.foodDesc}</p>
           <span class="btn btn--primary">{i.market.foodCta}</span>
         </div>
@@ -350,8 +365,8 @@ const urlEn = new URL('/en/', site).href;
 
   /* VIP */
   .vip { background: var(--color-bg-dark); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
-  .vip-hero { position: relative; height: 85vh; min-height: 520px; display: flex; align-items: flex-end; overflow: hidden; }
-  .vip-hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 30%; transform: scale(1.03); transition: transform 8s ease; }
+  .vip-hero { position: relative; height: min(58vh, 500px); min-height: clamp(360px, 48vh, 480px); display: flex; align-items: flex-end; overflow: hidden; }
+  .vip-hero-img { position: absolute; inset: 0; background-size: cover; background-position: center 38%; transform: scale(1.02); transition: transform 8s ease; }
   .vip:hover .vip-hero-img { transform: scale(1); }
   .vip-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(17,29,39,0.1) 0%, rgba(17,29,39,0.25) 40%, rgba(17,29,39,0.92) 100%); }
   .vip-hero-content { position: relative; z-index: 2; padding: 4rem 4rem 5rem; max-width: 680px; }
@@ -361,10 +376,10 @@ const urlEn = new URL('/en/', site).href;
   .vip-lead { color: #d4dce6; font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; max-width: 480px; white-space: pre-line; }
   .vip-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
   .vip-details { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--color-border); }
-  .vip-card { position: relative; text-decoration: none; color: inherit; overflow: hidden; display: flex; flex-direction: column; min-height: 340px; border-right: 1px solid var(--color-border); }
+  .vip-card { position: relative; text-decoration: none; color: inherit; overflow: hidden; display: flex; flex-direction: column; min-height: 300px; border-right: 1px solid var(--color-border); }
   .vip-card:last-child { border-right: none; }
   .vip-card:focus-visible { outline: 2px solid var(--color-primary); outline-offset: -2px; }
-  .vip-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.6s ease, filter 0.4s ease; filter: brightness(0.55) saturate(0.8); }
+  .vip-card-img { position: absolute; inset: 0; background-size: cover; background-position: center 42%; transition: transform 0.6s ease, filter 0.4s ease; filter: brightness(0.55) saturate(0.8); }
   .vip-card:hover .vip-card-img { transform: scale(1.06); filter: brightness(0.45) saturate(0.7); }
   .vip-card-body { position: relative; z-index: 1; margin-top: auto; padding: 1.75rem; display: flex; flex-direction: column; gap: 0.5rem; background: linear-gradient(to top, rgba(17,29,39,0.95) 0%, rgba(17,29,39,0.7) 60%, transparent 100%); transition: padding 0.3s ease; }
   .vip-card:hover .vip-card-body { padding-bottom: 2.25rem; }
@@ -402,7 +417,7 @@ const urlEn = new URL('/en/', site).href;
   .info-link { margin-top: auto; padding-top: 1rem; font-size: 0.85rem; font-weight: 600; color: var(--color-primary); }
 
   /* MARKET */
-  .market { padding: 0 2rem 6rem; }
+  .market { padding: 3.5rem 2rem 6rem; }
   .market-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .market-card { position: relative; border-radius: var(--radius); min-height: 380px; background-size: cover; background-position: center; display: flex; align-items: flex-end; text-decoration: none; color: inherit; overflow: hidden; transition: transform 0.3s; }
   .market-card:hover { transform: translateY(-4px); }

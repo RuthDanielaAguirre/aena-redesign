@@ -1,6 +1,6 @@
 <script>
   import 'flag-icons/css/flag-icons.min.css';
-  let { currentLang = 'es' } = $props();
+  let { currentLang = 'es', navLabel = 'Cambiar idioma / Change language' } = $props();
 
   const langs = [
     { code: 'es', countryCode: 'es', label: 'Español', path: '/' },
@@ -8,7 +8,7 @@
   ];
 </script>
 
-<div class="switcher" role="navigation" aria-label="Cambiar idioma / Change language">
+<div class="switcher" role="navigation" aria-label={navLabel}>
   {#each langs as lang}
     <a
       href={lang.path}
@@ -42,7 +42,8 @@
     padding: 0.3rem 0.6rem;
     border-radius: 6px;
     text-decoration: none;
-    color: rgba(255,255,255,0.5);
+    color: #d9e1ea;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
     font-size: 0.75rem;
     font-weight: 600;
     transition: all 0.2s;

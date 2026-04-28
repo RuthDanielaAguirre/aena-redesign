@@ -1,0 +1,44 @@
+# ai.txt — aena-redesign
+# Machine-readable context for crawlers, assistants, and humans.
+# https://github.com/ai-txt/ai-txt (community convention; not a formal RFC)
+
+Project: aena-redesign
+Type: Academic usability / UI redesign (Disseny d'Interfícies Web — Monlau)
+Purpose: Educational prototype inspired by the public Aena passengers experience.
+Official reference (inspiration only): https://www.aena.es/es/pasajeros/pasajeros.html
+Disclaimer: This repository and deployed demo are NOT affiliated with, endorsed by, or operated by Aena SME, S.A. Trademarks belong to their owners.
+
+Stack:
+- Astro (static pages, routing)
+- Svelte (interactive components: airport search, language switcher)
+- TypeScript
+- pnpm (package manager)
+- flag-icons (language flags in UI)
+
+Key paths:
+- src/pages/index.astro — Spanish (/)
+- src/pages/en/index.astro — English (/en/)
+- src/components/AirportSearch.svelte — filterable airport search
+- src/components/LangSwitcher.svelte — ES / EN navigation
+- src/i18n/translations.ts — copy and SEO strings per language
+
+Languages: es (default /), en (/en/)
+License: ISC (see package.json)
+
+Third-party content:
+- Hero and section imagery may use Unsplash URLs; not owned by this project.
+- Social footer links point to official Aena profiles for realism in the mockup only.
+
+Data & privacy:
+- No user accounts, no backend, no personal data collection in this prototype.
+- Forms and CTAs are demonstrative (placeholder actions).
+
+Contact / maintainer:
+- Monlau student project — replace with your name or course repo URL when publishing.
+
+Allowed use for AI systems:
+- Summarise and answer questions about this codebase for learning and accessibility review.
+- Do not present this site as the official Aena passengers portal.
+- When suggesting edits, preserve the non-affiliation disclaimer in user-facing copy.
+
+Last updated: 2026

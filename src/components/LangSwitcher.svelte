@@ -1,6 +1,13 @@
-<script>
-  import 'flag-icons/css/flag-icons.min.css';
+<script lang="ts">
+  import esFlag from 'flag-icons/flags/1x1/es.svg?url';
+  import gbFlag from 'flag-icons/flags/1x1/gb.svg?url';
+
   let { currentLang = 'es', navLabel = 'Change language' } = $props();
+
+  const flagSrc: Record<string, string> = {
+    es: esFlag,
+    gb: gbFlag,
+  };
 
   const langs = [
     { code: 'es', countryCode: 'es', label: 'Español', path: '/' },
@@ -18,7 +25,15 @@
       aria-current={currentLang === lang.code ? 'page' : undefined}
       hreflang={lang.code}
     >
-      <span class={`fi fi-${lang.countryCode}`} aria-hidden="true"></span>
+      <img
+        class="lang-flag"
+        src={flagSrc[lang.countryCode]}
+        alt=""
+        width="18"
+        height="14"
+        loading="lazy"
+        decoding="async"
+      />
       <span class="code">{lang.code.toUpperCase()}</span>
     </a>
   {/each}
@@ -57,6 +72,13 @@
     color: #111d27;
   }
 
-  .fi { width: 1.2em; height: 0.9em; border-radius: 2px; }
+  .lang-flag {
+    width: 1.15em;
+    height: 0.86em;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
   .code { line-height: 1; }
 </style>

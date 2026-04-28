@@ -13,7 +13,7 @@ Stack:
 - Svelte (interactive components: airport search, language switcher)
 - TypeScript
 - pnpm (package manager)
-- flag-icons (language flags in UI)
+- flag-icons (ES/GB SVG flags only, imported in LangSwitcher; no full icon CSS)
 
 Key paths:
 - src/pages/index.astro — Spanish (/)

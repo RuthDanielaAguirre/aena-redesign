@@ -15,7 +15,7 @@
 - Buscador de aeropuertos filtrable (`AirportSearch.svelte`)
 - Hero con carrusel de imágenes y CTA
 - Bloques parking, VIP, información de viaje y “market”
-- **i18n**: español en `/`, inglés en `/en/` (`LangSwitcher.svelte`, `flag-icons`)
+- **i18n**: español en `/`, inglés en `/en/` (`LangSwitcher.svelte`, banderas ES/GB vía SVG `flag-icons`)
 - Textos y etiquetas de accesibilidad centralizados en `src/i18n/translations.ts`
 
 ## Quick start

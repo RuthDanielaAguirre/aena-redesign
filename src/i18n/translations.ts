@@ -18,7 +18,7 @@ export const t = {
       ogLocale: 'es_ES',
       ogLocaleAlternate: 'en_US',
       ogImage:
-        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&h=630&q=65',
+        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&h=630&q=65&fm=webp',
     },
     a11y: {
       home: 'Aena — Ir al inicio',
@@ -77,9 +77,9 @@ export const t = {
       ctaPrimary: 'Reservar sala VIP',
       ctaSecondary: 'Ver ubicaciones →',
       cards: [
-        { tag: 'Gastronomía', title: 'Bar y catering premium', desc: 'Bebidas, snacks y menús de temporada incluidos en tu acceso', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=560&q=60', aria: 'Gastronomía en sala VIP' },
-        { tag: 'Confort', title: 'Zona de descanso', desc: 'Sillones ergonómicos, silencio y temperatura perfecta para desconectar', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=560&q=60', aria: 'Zona de descanso VIP' },
-        { tag: 'Conectividad', title: 'Wifi de alta velocidad', desc: 'Trabaja o navega sin límites con conexión premium y puertos de carga', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=560&q=60', aria: 'Conectividad en sala VIP' },
+        { tag: 'Gastronomía', title: 'Bar y catering premium', desc: 'Bebidas, snacks y menús de temporada incluidos en tu acceso', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=560&q=60&fm=webp', aria: 'Gastronomía en sala VIP' },
+        { tag: 'Confort', title: 'Zona de descanso', desc: 'Sillones ergonómicos, silencio y temperatura perfecta para desconectar', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=560&q=60&fm=webp', aria: 'Zona de descanso VIP' },
+        { tag: 'Conectividad', title: 'Wifi de alta velocidad', desc: 'Trabaja o navega sin límites con conexión premium y puertos de carga', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=560&q=60&fm=webp', aria: 'Conectividad en sala VIP' },
       ],
     },
     info: {
@@ -149,7 +149,7 @@ export const t = {
       ogLocale: 'en_US',
       ogLocaleAlternate: 'es_ES',
       ogImage:
-        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&h=630&q=65',
+        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&h=630&q=65&fm=webp',
     },
     a11y: {
       home: 'Aena — Go to home',
@@ -208,9 +208,9 @@ export const t = {
       ctaPrimary: 'Book VIP lounge',
       ctaSecondary: 'See locations →',
       cards: [
-        { tag: 'Gastronomy', title: 'Premium bar & catering', desc: 'Drinks, snacks and seasonal menus included with your access', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=560&q=60', aria: 'VIP lounge gastronomy' },
-        { tag: 'Comfort', title: 'Rest area', desc: 'Ergonomic chairs, silence and the perfect temperature to unwind', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=560&q=60', aria: 'VIP rest area' },
-        { tag: 'Connectivity', title: 'High-speed WiFi', desc: 'Work or browse without limits with premium connection and charging ports', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=560&q=60', aria: 'VIP lounge connectivity' },
+        { tag: 'Gastronomy', title: 'Premium bar & catering', desc: 'Drinks, snacks and seasonal menus included with your access', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=560&q=60&fm=webp', aria: 'VIP lounge gastronomy' },
+        { tag: 'Comfort', title: 'Rest area', desc: 'Ergonomic chairs, silence and the perfect temperature to unwind', img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=560&q=60&fm=webp', aria: 'VIP rest area' },
+        { tag: 'Connectivity', title: 'High-speed WiFi', desc: 'Work or browse without limits with premium connection and charging ports', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=560&q=60&fm=webp', aria: 'VIP lounge connectivity' },
       ],
     },
     info: {

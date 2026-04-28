@@ -13,7 +13,7 @@
 ## Características / Features
 
 - Buscador de aeropuertos filtrable (`AirportSearch.svelte`)
-- Hero con carrusel de imágenes y CTA
+- Hero con carrusel de **`<img>`** (LCP: primera imagen prioritaria), CTA y buscador
 - Bloques parking, VIP, información de viaje y “market”
 - **i18n**: español en `/`, inglés en `/en/` (`LangSwitcher.svelte`, banderas ES/GB vía SVG `flag-icons`)
 - Textos y etiquetas de accesibilidad centralizados en `src/i18n/translations.ts`
@@ -33,22 +33,32 @@ pnpm preview
 src/
   components/     AirportSearch.svelte, LangSwitcher.svelte, …
   i18n/           translations.ts
+  styles/         critical.css (above the fold), below-fold.css (carga diferida)
   pages/
     index.astro   ES (/)
     en/index.astro EN (/en/)
 public/
-  ai.txt          Contexto para humanos e IA (no oficial)
+  .well-known/ai.txt   Contexto para humanos e IA (no oficial) → `/.well-known/ai.txt`
 ```
 
-## SEO
+## SEO y `<head>`
 
-El `<head>` incluye `lang`, **meta description**, **Open Graph**, **Twitter Card**, **`link rel="canonical"`** por idioma y **`hreflang`** con URLs absolutas cuando `site` está definido en `astro.config.mjs`.
+- `lang`, **meta description**, **Open Graph**, **Twitter Card**, **`canonical`** por idioma y **`hreflang`** (URLs absolutas con `site` en `astro.config.mjs`).
+- **Fuentes:** `preconnect` a Google Fonts + hoja de estilos de fuentes en carga no bloqueante (`preload` + `onload`).
+- **CSS:** hoja **crítica** enlazada al inicio; **`below-fold.css`** enlazada con `media="print"` y `onload` para no bloquear el primer render (mejor en móvil).
 
 Antes de desplegar, sustituye `site` en `astro.config.mjs` por la URL pública real (canonical, `og:url` e imágenes sociales dependen de ella).
 
+## Rendimiento / Performance
+
+- Imágenes Unsplash con **`fm=webp`** (y `auto=format` / `fit=crop` donde aplica).
+- Islas Svelte: **`LangSwitcher`** con `client:load`; **`AirportSearch`** con `client:visible` (ajustable si priorizas hidratar antes el buscador).
+
+Vuelve a medir con **Lighthouse (móvil)** tras cada despliegue; la puntuación depende de red, CPU simulada y caché.
+
 ## Disclaimer
 
-Este proyecto es **educativo**. Las marcas y el nombre “Aena” se usan solo como referencia visual y de contenido para el ejercicio de diseño. Las imágenes de héroe y secciones provienen de **Unsplash** (terceros).
+Este proyecto es **educativo**. Las marcas y el nombre “Aena” se usan solo como referencia visual y de contenido para el ejercicio de diseño. Las imágenes de héroe y secciones provienen de **Unsplash** (terceros), servidas en WebP cuando el CDN lo permite.
 
 ## Licencia / License
 
@@ -56,4 +66,4 @@ ISC (según `package.json`).
 
 ## Repositorio / Repository
 
-Sustituye este enlace por el remoto cuando exista: `https://github.com/TU_USUARIO/aena-redesign`
+Código en GitHub: [RuthDanielaAguirre/aena-redesign](https://github.com/RuthDanielaAguirre/aena-redesign)

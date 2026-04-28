@@ -31,8 +31,9 @@
         alt=""
         width="18"
         height="14"
-        loading="lazy"
+        loading="eager"
         decoding="async"
+        fetchpriority="low"
       />
       <span class="code">{lang.code.toUpperCase()}</span>
     </a>

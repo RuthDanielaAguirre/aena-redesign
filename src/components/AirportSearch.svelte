@@ -92,7 +92,7 @@
   {/if}
 
   {#if selected}
-    <a href="#" class="go-btn">Ver {selected.name} →</a>
+    <button type="button" class="go-btn">Ver {selected.name} →</button>
   {/if}
 </div>
 
@@ -207,16 +207,17 @@
     display: inline-block;
     margin-top: 1rem;
     background: var(--color-primary);
-    color: var(--color-bg);
+    color: #111d27;
     padding: 0.75rem 1.5rem;
     border-radius: 10px;
-    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
     font-weight: 700;
     font-size: 0.95rem;
     transition: background 0.2s;
   }
 
-  .go-btn:hover {
-    background: var(--color-primary);
-  }
+  .go-btn:hover { background: #a8e000; }
+  .go-btn:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
 </style>

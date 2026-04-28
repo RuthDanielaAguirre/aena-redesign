@@ -1,0 +1,131 @@
+export const languages = {
+  es: { label: 'Español', flag: '🇪🇸', path: '/' },
+  en: { label: 'English', flag: '🇬🇧', path: '/en/' },
+};
+
+export type Lang = keyof typeof languages;
+
+export const t = {
+  es: {
+    nav: {
+      passengers: 'Pasajeros',
+      airlines: 'Aerolíneas',
+      corporate: 'Corporativa',
+    },
+    hero: {
+      eyebrow: 'Bienvenido a Aena',
+      title: 'Tu próximo viaje',
+      titleEm: 'empieza aquí.',
+      sub: 'Encuentra tu aeropuerto y accede a toda la información que necesitas',
+    },
+    stats: {
+      airports: 'Aeropuertos',
+      passengers: 'Pasajeros al año',
+      destinations: 'Destinos conectados',
+      realtime: 'Información en tiempo real',
+    },
+    parking: {
+      eyebrow: 'Reserva fácil y rápida',
+      title: 'Parking de Aena.',
+      titleLine2: 'Sin colas, sin estrés.',
+      desc: 'Reserva tu plaza antes de salir y llega al aeropuerto con todo controlado. Precios desde',
+      cta: 'Reservar parking',
+      rates: 'Ver tarifas →',
+      formTitle: 'Reserva rápida',
+      airport: 'Aeropuerto',
+      airportPlaceholder: 'Selecciona un aeropuerto',
+      checkin: 'Entrada',
+      checkout: 'Salida',
+      submit: 'Ver disponibilidad',
+    },
+    info: {
+      eyebrow: 'Prepara tu viaje',
+      title: 'Todo lo que',
+      titleLine2: 'necesitas saber',
+      cards: [
+        { tag: 'Equipaje', title: '¿Qué puedo llevar en cabina?', desc: 'Medidas, pesos y restricciones para no tener sorpresas en el aeropuerto' },
+        { tag: 'Seguridad', title: 'Controles y seguridad', desc: 'Qué esperar, cómo prepararte y documentación necesaria' },
+        { tag: 'Accesibilidad', title: 'Asistencia sin barreras', desc: 'Servicio gratuito para personas con movilidad reducida' },
+        { tag: 'Mascotas', title: 'Aena Pets by Petpassi', desc: 'Todo sobre cómo viajar con tu mascota de forma segura' },
+        { tag: 'Cómo llegar', title: 'Transporte y accesos', desc: 'Metro, bus, tren y taxi para llegar sin complicaciones' },
+        { tag: 'Exclusivo', title: 'Salas VIP Aena', desc: 'Relájate antes de tu vuelo en nuestras salas premium' },
+      ],
+      more: 'Saber más →',
+      discover: 'Descubrir →',
+    },
+    market: {
+      shopDesc: 'Las mejores marcas con descuentos exclusivos antes de embarcar',
+      shopCta: 'Explorar tiendas →',
+      foodDesc: 'Pide tu comida antes de llegar y recógela sin esperas en el aeropuerto',
+      foodCta: 'Pedir ahora →',
+    },
+    footer: {
+      legal: 'Aviso legal',
+      privacy: 'Privacidad',
+      accessibility: 'Accesibilidad',
+      contact: 'Contacto',
+      copy: '© 2025 Aena — Rediseño de usabilidad · Práctica Monlau',
+    },
+  },
+  en: {
+    nav: {
+      passengers: 'Passengers',
+      airlines: 'Airlines',
+      corporate: 'Corporate',
+    },
+    hero: {
+      eyebrow: 'Welcome to Aena',
+      title: 'Your next journey',
+      titleEm: 'starts here.',
+      sub: 'Find your airport and access all the information you need',
+    },
+    stats: {
+      airports: 'Airports',
+      passengers: 'Passengers per year',
+      destinations: 'Connected destinations',
+      realtime: 'Real-time information',
+    },
+    parking: {
+      eyebrow: 'Easy and fast booking',
+      title: 'Aena Parking.',
+      titleLine2: 'No queues, no stress.',
+      desc: 'Book your spot before you leave and arrive at the airport with everything under control. Prices from',
+      cta: 'Book parking',
+      rates: 'See rates →',
+      formTitle: 'Quick booking',
+      airport: 'Airport',
+      airportPlaceholder: 'Select an airport',
+      checkin: 'Check-in',
+      checkout: 'Check-out',
+      submit: 'Check availability',
+    },
+    info: {
+      eyebrow: 'Prepare your trip',
+      title: 'Everything you',
+      titleLine2: 'need to know',
+      cards: [
+        { tag: 'Luggage', title: 'What can I bring in the cabin?', desc: 'Sizes, weights and restrictions so you have no surprises at the airport' },
+        { tag: 'Security', title: 'Security controls', desc: 'What to expect, how to prepare and required documentation' },
+        { tag: 'Accessibility', title: 'Barrier-free assistance', desc: 'Free service for people with reduced mobility or special needs' },
+        { tag: 'Pets', title: 'Aena Pets by Petpassi', desc: 'Everything about travelling with your pet safely and comfortably' },
+        { tag: 'Getting there', title: 'Transport & access', desc: 'Metro, bus, train and taxi to arrive without complications' },
+        { tag: 'Exclusive', title: 'Aena VIP Lounges', desc: 'Relax before your flight in our premium lounges' },
+      ],
+      more: 'Learn more →',
+      discover: 'Discover →',
+    },
+    market: {
+      shopDesc: 'The best brands with exclusive discounts before you board',
+      shopCta: 'Explore shops →',
+      foodDesc: 'Order your food before you arrive and pick it up without waiting',
+      foodCta: 'Order now →',
+    },
+    footer: {
+      legal: 'Legal notice',
+      privacy: 'Privacy',
+      accessibility: 'Accessibility',
+      contact: 'Contact',
+      copy: '© 2025 Aena — Usability redesign · Monlau Practice',
+    },
+  },
+};

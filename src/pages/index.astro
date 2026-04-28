@@ -4,15 +4,33 @@ import LangSwitcher from '../components/LangSwitcher.svelte';
 import { t } from '../i18n/translations';
 const lang = 'es';
 const i = t[lang];
+const site = Astro.site!;
+const canonicalUrl = new URL('/', site).href;
+const urlEs = new URL('/', site).href;
+const urlEn = new URL('/en/', site).href;
 ---
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aena — {i.nav.passengers}</title>
-  <link rel="alternate" hreflang="es" href="/" />
-  <link rel="alternate" hreflang="en" href="/en/" />
+  <title>{i.seo.title}</title>
+  <meta name="description" content={i.seo.metaDescription} />
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" hreflang="es" href={urlEs} />
+  <link rel="alternate" hreflang="en" href={urlEn} />
+  <link rel="alternate" hreflang="x-default" href={urlEs} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={i.seo.ogTitle} />
+  <meta property="og:description" content={i.seo.ogDescription} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:locale" content={i.seo.ogLocale} />
+  <meta property="og:locale:alternate" content={i.seo.ogLocaleAlternate} />
+  <meta property="og:image" content={i.seo.ogImage} />
+  <meta name="twitter:card" content={i.seo.twitterCard} />
+  <meta name="twitter:title" content={i.seo.ogTitle} />
+  <meta name="twitter:description" content={i.seo.ogDescription} />
+  <meta name="twitter:image" content={i.seo.ogImage} />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
 </head>
 <body>

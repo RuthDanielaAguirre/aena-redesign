@@ -7,6 +7,19 @@ export type Lang = keyof typeof languages;
 
 export const t = {
   es: {
+    seo: {
+      title: 'Aena — Pasajeros',
+      metaDescription:
+        'Rediseño educativo del portal de pasajeros Aena: buscador de aeropuertos, parking, salas VIP e información de viaje. Práctica Monlau — no es el sitio oficial de Aena.',
+      ogTitle: 'Aena — Pasajeros',
+      ogDescription:
+        'Rediseño educativo del portal de pasajeros Aena: buscador de aeropuertos, parking, salas VIP e información de viaje. Práctica Monlau — no es el sitio oficial de Aena.',
+      twitterCard: 'summary_large_image' as const,
+      ogLocale: 'es_ES',
+      ogLocaleAlternate: 'en_US',
+      ogImage:
+        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop&q=80',
+    },
     a11y: {
       home: 'Aena — Ir al inicio',
       mainNav: 'Navegación principal',
@@ -120,6 +133,19 @@ export const t = {
     },
   },
   en: {
+    seo: {
+      title: 'Aena — Passengers',
+      metaDescription:
+        'Educational usability redesign of the Aena passengers portal: airport search, parking, VIP lounges and travel info. Monlau practice — not the official Aena website.',
+      ogTitle: 'Aena — Passengers',
+      ogDescription:
+        'Educational usability redesign of the Aena passengers portal: airport search, parking, VIP lounges and travel info. Monlau practice — not the official Aena website.',
+      twitterCard: 'summary_large_image' as const,
+      ogLocale: 'en_US',
+      ogLocaleAlternate: 'es_ES',
+      ogImage:
+        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop&q=80',
+    },
     a11y: {
       home: 'Aena — Go to home',
       mainNav: 'Main navigation',

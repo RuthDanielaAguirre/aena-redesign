@@ -164,9 +164,9 @@ const heroSlides = [
     <div class="vip-hero">
       <img
         class="vip-hero-img"
-        src={unsplash('photo-1583416750470-965b2707b355', 1200)}
+        src={unsplash('photo-1583416750470-965b2707b355', 1280)}
         alt=""
-        width="1200"
+        width="1280"
         height="675"
         loading="lazy"
         decoding="async"
@@ -206,7 +206,7 @@ const heroSlides = [
       </div>
       <div class="info-grid">
         <a href="#" class="info-card info-card--wide" aria-label={i.info.cards[0].title}>
-          <div class="info-card-img" style={`background-image: url('${unsplash('photo-1553361371-9b22f78e8b1d', 800)}')`} aria-hidden="true"></div>
+          <div class="info-card-img" style={`background-image: url('${unsplash('photo-1553361371-9b22f78e8b1d', 700)}')`} aria-hidden="true"></div>
           <div class="info-card-body">
             <span class="info-tag">{i.info.cards[0].tag}</span>
             <h3>{i.info.cards[0].title}</h3>
@@ -216,11 +216,11 @@ const heroSlides = [
         </a>
         {i.info.cards.slice(1).map((card, idx) => {
           const imgs = [
-            unsplash('photo-1578575437130-527eed3abbec', 560),
-            unsplash('photo-1532629345422-7515f3d16bb6', 560),
-            unsplash('photo-1587300003388-59208cc962cb', 560),
-            unsplash('photo-1474487548417-781cb71495f3', 560),
-            unsplash('photo-1583416750470-965b2707b355', 560),
+            unsplash('photo-1578575437130-527eed3abbec', 500),
+            unsplash('photo-1532629345422-7515f3d16bb6', 500),
+            unsplash('photo-1587300003388-59208cc962cb', 500),
+            unsplash('photo-1474487548417-781cb71495f3', 500),
+            unsplash('photo-1583416750470-965b2707b355', 500),
           ];
           const isLast = idx === 4;
           return (
@@ -241,7 +241,7 @@ const heroSlides = [
 
   <section class="market" aria-label={i.a11y.marketRegion}>
     <div class="market-inner">
-      <a href="#" class="market-card" aria-label={i.a11y.shopCard} style={`background-image: url('${unsplash('photo-1483985988355-763728e1935b', 720)}')`}>
+      <a href="#" class="market-card" aria-label={i.a11y.shopCard} style={`background-image: url('${unsplash('photo-1483985988355-763728e1935b', 700)}')`}>
         <div class="market-overlay" aria-hidden="true"></div>
         <div class="market-card-content">
           <span class="market-eyebrow">{i.market.eyebrow}</span>
@@ -250,7 +250,7 @@ const heroSlides = [
           <span class="btn btn--primary">{i.market.shopCta}</span>
         </div>
       </a>
-      <a href="#" class="market-card" aria-label={i.a11y.foodCard} style={`background-image: url('${unsplash('photo-1504674900247-0877df9cc836', 720)}')`}>
+      <a href="#" class="market-card" aria-label={i.a11y.foodCard} style={`background-image: url('${unsplash('photo-1504674900247-0877df9cc836', 700)}')`}>
         <div class="market-overlay market-overlay--food" aria-hidden="true"></div>
         <div class="market-card-content">
           <span class="market-eyebrow">{i.market.eyebrow}</span>
